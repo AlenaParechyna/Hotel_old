@@ -12,30 +12,23 @@ public class Order extends AEntity {
     Room room;
     LocalDate dateCheckIn;
     Long howMuchDays;
-    LocalDate dateCheckOut;
 
+    List <Maintenance>  maintenance = new ArrayList<Maintenance>() {};
     public List<Maintenance> getMaintenance() {
         return maintenance;
     }
 
-    public void setMaintenance(List<Maintenance> maintenance) {
-        this.maintenance = maintenance;
-    }
-
-    List <Maintenance>  maintenance = new ArrayList<Maintenance>() {
-    };
 
     public Order() {
 
     }
 
-    public Order(Guest guest, Room room, LocalDate dateCheckIn, Long howMuchDays, LocalDate dateCheckOut, List<Maintenance> maintenance) {
+    public Order(Guest guest, Room room, LocalDate dateCheckIn, Long howMuchDays, List<Maintenance> maintenance) {
         this.guest = guest;
         this.room = room;
         this.dateCheckIn = dateCheckIn;
         this.howMuchDays = howMuchDays;
-        this.dateCheckOut = dateCheckOut;
-        this.maintenance = maintenance;
+             this.maintenance = maintenance;
     }
 
     public Guest getGuest() {
@@ -69,15 +62,6 @@ public class Order extends AEntity {
     public void setHowMuchDays(Long howMuchDays) {
         this.howMuchDays = howMuchDays;
     }
-    public LocalDate getDateCheckOut() {
-
-        return dateCheckOut;
-    }
-
-    public void setDateCheckOut(LocalDate dateCheckOut) {
-        dateCheckOut = dateCheckIn.plusDays(howMuchDays);
-        this.dateCheckOut = dateCheckOut;
-    }
 
     @Override
     public String toString() {
@@ -86,7 +70,6 @@ public class Order extends AEntity {
                 ", room=" + room +
                 ", dateCheckIn=" + dateCheckIn +
                 ", howMuchDays=" + howMuchDays +
-                ", dateCheckOut=" + dateCheckOut +
                 '}';
     }
 }

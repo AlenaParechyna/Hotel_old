@@ -2,21 +2,29 @@ package com.senla.model;
 
 import com.senla.util.IdGenerator;
 
+import java.util.List;
+
 public class Guest extends AEntity {
-
-    public String getName() {
-        return name;
-    }
-
+    private Long id;
     private String name;
     private Integer age;
-    private Long id;
 
-    public Guest(String name, Integer age) {
+    public Guest() {
+
+    }
+
+
+    private List<Maintenance> guestMaintenance;
+
+    public Guest(Long id, String name, Integer age) {
+        this.id = id;
         this.name = name;
         this.age = age;
     }
 
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String toString() {

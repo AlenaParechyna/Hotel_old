@@ -1,14 +1,19 @@
 package com.senla.model;
 
+import com.senla.util.IdGenerator;
+
 import java.util.List;
 
 public class Room extends AEntity {
 
+    private Long id;
     private Integer number;
     private Integer capacity;
     private RoomStatus status;
     private Guest guests;
     private Double priceRoom;
+    private Integer stars;
+    private List<Maintenance>roomMaintenance;
 
     public Room() {
 
@@ -16,7 +21,7 @@ public class Room extends AEntity {
     public Integer getStars() {
         return stars;
     }
-    private Integer stars;
+
     public  RoomStatus roomStatus(){
         return null;
     }
@@ -25,7 +30,8 @@ public class Room extends AEntity {
     @Override
     public String toString() {
         return "Room{" +
-                "number=" + number +
+                "id="+ getId() +
+                ", number=" + number +
                 ", capacity=" + capacity +
                 ", status=" + status +
                 ", guests=" + guests +
@@ -34,7 +40,8 @@ public class Room extends AEntity {
                 '}';
     }
 
-    public Room(Integer number, Integer capacity, RoomStatus status, Guest guests, Double priceRoom, Integer stars) {
+    public Room(Long id, Integer number, Integer capacity, RoomStatus status, Guest guests, Double priceRoom, Integer stars) {
+       this.id=id;
         this.number = number;
         this.capacity = capacity;
         this.status = status;
@@ -80,4 +87,16 @@ public class Room extends AEntity {
 }
 
 
+
+
+    @Override
+    public void setId(Long id) {
+       id = IdGenerator.generateRoomId();
+       this.id = id;
     }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+}
